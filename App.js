@@ -32,18 +32,19 @@ const TabNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        let size = 25;
+        let size = 22;
         let icon = "home";
+        let color = tintColor;
         // if (routeName == "Home") {
         //   // return <TabIcon name="home" size={25} color={tintColor} />;
         //   // return focused ? (
-            // <AnimatableIcon
-            //   animation={focused ? "bounce" : null}
-            //   iterationCount={5}
-            //   name="home"
-            //   size={25}
-            //   color={tintColor}
-            // />
+        // <AnimatableIcon
+        //   animation={focused ? "bounce" : null}
+        //   iterationCount={5}
+        //   name="home"
+        //   size={25}
+        //   color={tintColor}
+        // />
         //   // ) : (
         //   //   <Icon name="home" size={25} color={tintColor} />
         //   // );
@@ -59,21 +60,22 @@ const TabNavigator = createBottomTabNavigator(
         }
         if (routeName == "Liked") {
           icon = "heart";
+          color=focused?'red':color
         }
 
         return (
           <TabIcon
             name={icon}
             size={size}
-            color={tintColor}
+            color={color}
             focused={focused}
           />
         );
       }
     }),
     tabBarOptions: {
-      activeTintColor: "pink",
-      inactiveTintColor: "gray",
+      activeTintColor: "#59daac",
+      inactiveTintColor: "#8f8f8f"
       // showLabel: false
     }
   }

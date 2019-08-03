@@ -1,16 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
-import Icon from "react-native-vector-icons/dist/Feather";
+import Icon from "react-native-vector-icons/dist/FontAwesome";
 import * as Animatable from "react-native-animatable";
 
 const TabIcon = ({ name, color, size, focused }) => {
   const iconRef = useRef();
-//   useEffect(() => {
-//     // Update the document title using the browser API
-//     console.log(iconRef);
-    
-//   });
+  //   useEffect(() => {
+  //     // Update the document title using the browser API
+  //     console.log(iconRef);
+
+  //   });
   _onPress = () => {
-    iconRef.current && iconRef.current.tada();
+    if (name == "heart") {
+      iconRef.current && iconRef.current.pulse();
+    } else if (name == "home") {
+      iconRef.current && iconRef.current.bounce();
+    } else {
+      iconRef.current && iconRef.current.rotate();
+    }
   };
 
   return (
