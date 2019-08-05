@@ -28,7 +28,7 @@ export default class componentName extends Component {
             margin: 5
           }}
         />
-        <Text style={{ alignSelf: "center", fontWeight: "500" }}>Life</Text>
+        <Text style={{ alignSelf: "center", fontWeight: "500" }}>Title</Text>
       </View>
     );
   }

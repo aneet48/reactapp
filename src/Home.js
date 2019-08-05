@@ -4,17 +4,13 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Dimensions,
-  Image,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
-var { width } = Dimensions.get("window");
-var box_count = 3;
-var box_height = width / box_count - 40;
-import Cat from "./cat"
-import Aut from "./aut"
+import Icon from "react-native-vector-icons/dist/MaterialCommunityIcons";
+
+import Cat from "./cat";
+import Aut from "./aut";
 // import { ScrollView } from "react-native-gesture-handler";
 class Home extends Component {
   constructor(props) {
@@ -24,6 +20,17 @@ class Home extends Component {
       fontSize: 0
     };
   }
+
+  static navigationOptions = {
+    title: "Title",
+    headerTitleStyle: { textAlign: "center", alignSelf: "center", flex: 1 },
+    headerLeft: (
+      <TouchableOpacity >
+        <Icon name="text-short" style={{ paddingLeft: 10 }} size={20} />
+      </TouchableOpacity>
+    ),
+    headerRight: <View />
+  };
 
   render() {
     return (
@@ -107,9 +114,7 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
-              Header 1
-            </Text>
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Header 1</Text>
             <Text style={{ textDecorationLine: "underline", fontSize: 10 }}>
               Set Link
             </Text>
@@ -149,9 +154,7 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
-              Header 2
-            </Text>
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Header 2</Text>
             <Text style={{ textDecorationLine: "underline", fontSize: 10 }}>
               Set Link
             </Text>
@@ -174,7 +177,6 @@ class Home extends Component {
               <Aut />
               <Aut />
               <Aut />
-              
             </ScrollView>
           </View>
         </View>

@@ -5,28 +5,41 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
-// import Icon from "react-native-vector-icons/dist/Feather";
-// import * as Animatable from "react-native-animatable";
-
-// const AnimatableIcon = Animatable.createAnimatableComponent(Icon);
 
 import Home from "./src/Home";
+import Search from "./src/Search";
+import Saved from "./src/Saved";
+import Liked from "./src/Liked";
 import IconPage from "./src/icon";
 import TabIcon from "./src/TabIcon";
-// import Add from "./src/add";
 
 const HomeStack = createStackNavigator({
   Home: Home,
   Details: Home
 });
 
+const SearchStack = createStackNavigator({
+  Search: Search,
+  Details: Home
+});
+
+const SavedStack = createStackNavigator({
+  Saved: Saved,
+  Details: Home
+});
+
+const LikedStack = createStackNavigator({
+  Liked: Liked,
+  Details: Home
+});
+
 const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
-    Search: Home,
+    Search: SearchStack,
     Add: IconPage,
-    Saved: Home,
-    Liked: Home
+    Saved: SavedStack,
+    Liked: LikedStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -35,20 +48,7 @@ const TabNavigator = createBottomTabNavigator(
         let size = 22;
         let icon = "home";
         let color = tintColor;
-        // if (routeName == "Home") {
-        //   // return <TabIcon name="home" size={25} color={tintColor} />;
-        //   // return focused ? (
-        // <AnimatableIcon
-        //   animation={focused ? "bounce" : null}
-        //   iterationCount={5}
-        //   name="home"
-        //   size={25}
-        //   color={tintColor}
-        // />
-        //   // ) : (
-        //   //   <Icon name="home" size={25} color={tintColor} />
-        //   // );
-        // }
+
         if (routeName == "Search") {
           icon = "search";
         }
@@ -60,22 +60,18 @@ const TabNavigator = createBottomTabNavigator(
         }
         if (routeName == "Liked") {
           icon = "heart";
-          color=focused?'red':color
+          color = focused ? "#f994eb" : color;
         }
 
         return (
-          <TabIcon
-            name={icon}
-            size={size}
-            color={color}
-            focused={focused}
-          />
+          <TabIcon name={icon} size={size} color={color} focused={focused} />
         );
       }
     }),
     tabBarOptions: {
       activeTintColor: "#59daac",
-      inactiveTintColor: "#8f8f8f"
+      inactiveTintColor: "#8f8f8f",
+      keyboardHidesTabBar: true
       // showLabel: false
     }
   }
@@ -85,13 +81,8 @@ const DrawerNavigator = createDrawerNavigator(
   {
     Home: TabNavigator
   },
-
   {
-    // contentComponent: Blur,
-    // hideStatusBar: true,
     drawerBackgroundColor: " rgba(255, 255, 255, .15)",
-
-    // overlayColor: "white",
     contentOptions: {
       inactiveTintColor: "red",
       activeTintColor: "#fff",
