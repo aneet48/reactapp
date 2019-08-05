@@ -20,16 +20,21 @@ class Home extends Component {
       fontSize: 0
     };
   }
-
-  static navigationOptions = {
-    title: "Title",
-    headerTitleStyle: { textAlign: "center", alignSelf: "center", flex: 1 },
-    headerLeft: (
-      <TouchableOpacity >
-        <Icon name="text-short" style={{ paddingLeft: 10 }} size={20} />
-      </TouchableOpacity>
-    ),
-    headerRight: <View />
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Home",
+      headerTitleStyle: {
+        textAlign: "center",
+        alignSelf: "center",
+        flex: 1
+      },
+      headerLeft: (
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Icon name="text-short" style={{ paddingLeft: 10 }} size={30} />
+        </TouchableOpacity>
+      ),
+      headerRight: <View />
+    };
   };
 
   render() {
@@ -114,10 +119,20 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Header 1</Text>
-            <Text style={{ textDecorationLine: "underline", fontSize: 10 }}>
-              Set Link
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+              Header 1
             </Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("CatAll");
+              }}
+            >
+              <Text
+                style={{ textDecorationLine: "underline", fontSize: 10 }}
+              >
+                Set Link
+              </Text>
+            </TouchableOpacity>
           </View>
 
           <View
@@ -154,10 +169,20 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Header 2</Text>
-            <Text style={{ textDecorationLine: "underline", fontSize: 10 }}>
-              Set Link
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+              Header 2
             </Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("AutAll");
+              }}
+            >
+              <Text
+                style={{ textDecorationLine: "underline", fontSize: 10 }}
+              >
+                Set Link
+              </Text>
+            </TouchableOpacity>
           </View>
           <View
             style={{

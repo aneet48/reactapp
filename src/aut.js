@@ -1,18 +1,23 @@
 import React, { Component } from "react";
-import { Text, View, Image, Dimensions } from "react-native";
+import { Text, View, Image, Dimensions, TouchableOpacity } from "react-native";
 
 var { width } = Dimensions.get("window");
 var box_count = 3;
 var box_height = width / box_count - 40;
-export default class componentName extends Component {
+import { withNavigation } from "react-navigation";
+
+ class Aut extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => this.props.navigation.navigate("Posts")}
         style={{
-          //   backgroundColor: "#ffffff",
-          //   borderColor: "#ddd",
-          //   borderRadius: 5,
-          //   borderWidth: 1,
           marginRight: 5
         }}
       >
@@ -29,7 +34,9 @@ export default class componentName extends Component {
           }}
         />
         <Text style={{ alignSelf: "center", fontWeight: "500" }}>Title</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
+
+export default withNavigation(Aut);

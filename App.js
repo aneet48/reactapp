@@ -8,6 +8,9 @@ import {
 
 import Home from "./src/Home";
 import Search from "./src/Search";
+import Single from "./src/Single";
+import CatAll from "./src/cat-all";
+import AutAll from "./src/aut-all";
 import Saved from "./src/Saved";
 import Liked from "./src/Liked";
 import IconPage from "./src/icon";
@@ -15,22 +18,28 @@ import TabIcon from "./src/TabIcon";
 
 const HomeStack = createStackNavigator({
   Home: Home,
-  Details: Home
+  CatAll: CatAll,
+  AutAll: AutAll,
+  Posts: Saved,
+  Single: Single
 });
 
 const SearchStack = createStackNavigator({
   Search: Search,
-  Details: Home
+  Details: Home,
+  Single: Single
 });
 
 const SavedStack = createStackNavigator({
   Saved: Saved,
-  Details: Home
+  Details: Home,
+  Single: Single
 });
 
 const LikedStack = createStackNavigator({
   Liked: Liked,
-  Details: Home
+  Details: Home,
+  Single: Single
 });
 
 const TabNavigator = createBottomTabNavigator(
@@ -73,7 +82,8 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: "#8f8f8f",
       keyboardHidesTabBar: true
       // showLabel: false
-    }
+    },
+    resetOnBlur:true
   }
 );
 
