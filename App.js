@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import {
   createAppContainer,
   createDrawerNavigator,
@@ -13,8 +14,11 @@ import CatAll from "./src/cat-all";
 import AutAll from "./src/aut-all";
 import Saved from "./src/Saved";
 import Liked from "./src/Liked";
+import SideMenu from "./src/SideMenu";
 import IconPage from "./src/icon";
+import AddNew from "./src/add-new";
 import TabIcon from "./src/TabIcon";
+let { width } = Dimensions.get("window");
 
 const HomeStack = createStackNavigator({
   Home: Home,
@@ -26,19 +30,21 @@ const HomeStack = createStackNavigator({
 
 const SearchStack = createStackNavigator({
   Search: Search,
-  Details: Home,
   Single: Single
 });
 
 const SavedStack = createStackNavigator({
   Saved: Saved,
-  Details: Home,
   Single: Single
 });
 
 const LikedStack = createStackNavigator({
   Liked: Liked,
-  Details: Home,
+  Single: Single
+});
+
+const AddNewStack = createStackNavigator({
+  Add: AddNew,
   Single: Single
 });
 
@@ -46,7 +52,7 @@ const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
     Search: SearchStack,
-    Add: IconPage,
+    Add: AddNewStack,
     Saved: SavedStack,
     Liked: LikedStack
   },
@@ -83,7 +89,7 @@ const TabNavigator = createBottomTabNavigator(
       keyboardHidesTabBar: true
       // showLabel: false
     },
-    resetOnBlur:true
+    resetOnBlur: true
   }
 );
 
@@ -92,13 +98,17 @@ const DrawerNavigator = createDrawerNavigator(
     Home: TabNavigator
   },
   {
-    drawerBackgroundColor: " rgba(255, 255, 255, .15)",
-    contentOptions: {
-      inactiveTintColor: "red",
-      activeTintColor: "#fff",
-      activeBackgroundColor: "gray"
-    }
+    drawerWidth: width,
+    contentComponent: SideMenu
   }
+  // {
+  //   drawerBackgroundColor: " rgba(255, 255, 255, .15)",
+  //   contentOptions: {
+  //     inactiveTintColor: "red",
+  //     activeTintColor: "#fff",
+  //     activeBackgroundColor: "gray"
+  //   }
+  // }
 );
 
 export default createAppContainer(DrawerNavigator);
