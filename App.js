@@ -52,7 +52,7 @@ const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
     Search: SearchStack,
-    Add: AddNewStack,
+    // Add: AddNewStack,
     Saved: SavedStack,
     Liked: LikedStack
   },
@@ -95,20 +95,27 @@ const TabNavigator = createBottomTabNavigator(
 
 const DrawerNavigator = createDrawerNavigator(
   {
-    Home: TabNavigator
+    Home: TabNavigator,
+    About: TabNavigator,
+    Contact: TabNavigator
   },
   {
     drawerWidth: width,
-    contentComponent: SideMenu
+    contentComponent: SideMenu,
+
+    drawerBackgroundColor: " rgba(255, 255, 255, .15)",
+    contentOptions: {
+      inactiveTintColor: "#fff",
+      activeTintColor: "#f994eb",
+      itemsContainerStyle: {
+        justifyContent: 'space-between',
+        alignItems: "center"
+      },
+      labelStyle:{
+        fontSize:20
+      }
+    }
   }
-  // {
-  //   drawerBackgroundColor: " rgba(255, 255, 255, .15)",
-  //   contentOptions: {
-  //     inactiveTintColor: "red",
-  //     activeTintColor: "#fff",
-  //     activeBackgroundColor: "gray"
-  //   }
-  // }
 );
 
 export default createAppContainer(DrawerNavigator);
